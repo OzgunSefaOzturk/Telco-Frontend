@@ -1,0 +1,133 @@
+<!-- Email input -->
+<div class="container">
+  <br />
+  <br />
+  <div class="row">
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-4 shadow">
+          <div class="modal-header p-5 pb-4 border-bottom-0">
+            <!-- <h1 class="modal-title fs-5" >Modal title</h1> -->
+            <div class="center"></div>
+            <img
+              src="../../assets/image/HomePage.PNG"
+              class="round"
+              width="300"
+            />
+
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="modal-body p-5 pt-0">
+            <form [formGroup]="authForm">
+              <igx-input-group>
+                <input
+                  igxInput
+                  name="userName"
+                  type="text"
+                  formControlName="userName"
+                  [(ngModel)]="userName"
+                />
+
+                <label igxLabel for="userName">Full Name</label>
+
+                <igx-suffix>
+                  <igx-icon>person</igx-icon>
+                </igx-suffix>
+              </igx-input-group>
+
+              <igx-input-group>
+                <input
+                  igxInput
+                  name="password"
+                  type="password"
+                  formControlName="password"
+                  [(ngModel)]="password"
+                />
+                <label igxLabel for="password">password</label>
+                <igx-suffix>
+                  <igx-icon>key</igx-icon>
+                </igx-suffix>
+              </igx-input-group>
+
+              <br />
+              <div
+                *ngIf="
+                  this.authForm.get('userName')?.dirty &&
+                  this.authForm.get('userName')?.touched &&
+                  this.authForm.get('userName')?.errors
+                "
+                class="alert alert-danger"
+                role="alert"
+              >
+                <ng-container>
+                  <div
+                    class="help is-danger"
+                    *ngIf="this.authForm.get('userName')?.errors?.['required']"
+                  >
+                    *zorunlu alan
+                  </div>
+                  <div
+                    class="help is-danger"
+                    *ngIf="this.authForm.get('userName')?.errors?.['minlength']"
+                  >
+                    User Name
+                    {{this.authForm.get('userName')?.errors?.['minlength']?.['actualLength']}}
+                    karakter içermektedir ,minumum
+                    {{this.authForm.get('userName')?.errors?.['minlength']?.['requiredLength']}}
+                    karakter olmalı
+                  </div>
+
+                  <div
+                    class="help is-danger"
+                    *ngIf="this.authForm.get('userName')?.errors?.['maxlength']"
+                  >
+                    User Name
+                    {{this.authForm.get('userName')?.errors?.['maxlength']?.['actualLength']}}
+                    karakter içermektedir ,minumum
+                    {{this.authForm.get('userName')?.errors?.['maxlength']?.['requiredLength']}}
+                    karakter olmalı
+                  </div>
+                </ng-container>
+              </div>
+              <br />
+              <br />
+              <div class="row d-grid gap-2 d-md-flex justify-content-md-end">
+                <div class="col">
+                  <button
+                    class="w-100 mb-2 btn btn-lg rounded-3 btn-primary"
+                    type="submit"
+                    (click)="singUpAdd()"
+                    [disabled]="authForm.invalid"
+                  >
+                    {{ isLoginMode ? "Login" : "Sign up " }}
+                  </button>
+                </div>
+
+                <br />
+                <div>
+                  <button
+                    class="w-100 mb-2 btn btn-lg rounded-3 btn-primary"
+                    type="button"
+                    (click)="onToggleMode()"
+                  >
+                    Toggle to {{ isLoginMode ? "Sign up " : "Login" }}
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col"></div>
+    <div class="col"></div>
+  </div>
+</div>

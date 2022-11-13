@@ -1,0 +1,59 @@
+<!-- // NAVBAR -->
+
+<header class="site-header sticky-top py-1">
+  <nav class=" d-flex flex-column flex-md-row justify-content-between navbar navbar-dark bg-opacity-75 bg-light  shadow-sm   ">
+  <div class="container">
+
+    <a href="#" class="navbar-brand d-flex align-items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+      <strong>
+
+        <a class="navbar-item" routerLink="/"
+        >Home
+        </a>
+       </strong>
+       <strong>
+        <a class="navbar-item" *ngIf="loggedin()" routerLink="/customers">
+          Customers
+        </a>
+        </strong>
+        <strong>
+        <a class="navbar-item" *ngIf="loggedin()" routerLink="/services">
+          Services
+        </a>
+      </strong>
+    </a>
+    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">
+        <button
+        *ngIf="!loggedin()"
+        class="button is-link is-light"
+        routerLink="/auth"
+      >
+        Log In
+      </button>
+      <button
+        *ngIf="loggedin()"
+        class="button is-link"
+        (click)="onLogOut()"
+      >
+        Log Out
+      </button>
+      </span>
+     
+      <span class="igx-navbar__left">
+
+        <igx-icon 
+        
+        *ngIf="loggedin()"
+        class="button is-link is-light rounded-circle btn-group-lg"
+        routerLink="/auth/login"
+        >
+      person
+      </igx-icon>
+     
+      </span>
+    </button>
+</div>
+  </nav>
+</header>

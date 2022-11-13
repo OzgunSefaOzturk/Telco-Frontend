@@ -1,0 +1,38 @@
+<br />
+<br />
+<div class="row">
+<div class="col-2"></div>
+  <div class="col-4">
+    <figure class="image is-256x256">
+      <img class="is-rounded" src="../../../assets/image/our-vector.png" width="600"/>
+    </figure>
+    <div>
+    <button type="button" routerLink="/services" class="btn btn-outline-primary">
+      Services Edit
+    </button>
+   <button type="button" routerLink="/customers/stp1" class="btn btn-outline-success">
+    Create New Customer
+  </button>
+ <button type="button" routerLink="/" class="btn btn-outline-danger">
+   Go To Home
+</button>
+</div>
+
+
+
+
+  </div>
+  
+  <div class="col-2">
+
+    <h2 *ngIf="userName" class="fw-normal">Welcome ..!
+      <div class="alert alert-primary rounded-circle text-center" role="alert">
+          {{userName}} 
+      </div>
+    </h2>
+  </div> 
+</div>
+
+
+
+  
